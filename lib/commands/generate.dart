@@ -29,7 +29,12 @@ Future generate(List<String> args) async {
   await flconfFile.create();
 
   // Lists the files in the flconf directory
-  final confFiles = Directory(path.join(Directory.current.path, 'flconf')).listSync();
+  final confDir = Directory(path.join(Directory.current.path, 'flconf'));
+  if (!await confDir.exists()) {
+    logError('flconf directory not found. Please run flconf init to create it.');
+    exit(1);
+  }
+  final confFiles = confDir.listSync();
 
   // These will store the raw AND formatted names of the files/variables.
   // Name formatting removes whitespaces/special characters and makes the names camelCase.
