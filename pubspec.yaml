@@ -1,7 +1,9 @@
 name: flconf
-description: A sample command-line application.
-# version: 1.0.0
-# homepage: https://www.example.com
+description: A CLI tool to help run flutter app from config file
+version: 1.0.0
+homepage: https://mankeli.co
+repository: https://github.com/Mankeli-Software/flconf
+issue_tracker: https://github.com/Mankeli-Software/flconf/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -11,7 +13,6 @@ dependencies:
 
 dev_dependencies:
   pedantic: ^1.10.0
-  test: ^1.16.0
 
 executables:
   flconf: main

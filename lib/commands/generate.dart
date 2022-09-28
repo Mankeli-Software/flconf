@@ -84,7 +84,7 @@ enum Config {
 
 /// An extension to parse enum value from string
 extension ConfigExtension on Config {
-  Config fromString(String input) {
+  static Config fromString(String input) {
     switch (input) {
 ''');
 
