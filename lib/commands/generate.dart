@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flconf/helpers/formatVariableName.dart';
+import 'package:flconf/helpers/format_variable_name.dart';
 import 'package:path/path.dart' as path;
 
 import '../helpers/logger.dart';

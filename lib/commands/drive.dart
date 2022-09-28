@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flconf/helpers/getDartDefines.dart';
+import 'package:flconf/helpers/get_dart_defines.dart';
 import 'package:flconf/helpers/logger.dart';
 
 /// Injects config file variables into the `flutter drive` -command using --dart-define
