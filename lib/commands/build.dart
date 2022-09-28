@@ -7,7 +7,8 @@ import 'package:flconf/helpers/logger.dart';
 Future build(List<String> args) async {
   /// Checks that has been given at least one argument (config file name)
   if (args.isEmpty) {
-    logError('Usage: flconf build <apk/ios> <config file name> <extra flutter parameters>');
+    logError(
+        'Usage: flconf build <apk/ios> <config file name> <extra flutter parameters>');
     exit(1);
   }
   final flutterArgs = ['build'];
@@ -15,7 +16,8 @@ Future build(List<String> args) async {
   /// Checks that the target is given and valid, adds to the arguments
   final target = args.removeAt(0);
   if (!['apk', 'ios'].contains(target)) {
-    logError('Usage: flconf build <apk/ios> <config file name> <extra flutter parameters>');
+    logError(
+        'Usage: flconf build <apk/ios> <config file name> <extra flutter parameters>');
     exit(1);
   }
   flutterArgs.add(target);

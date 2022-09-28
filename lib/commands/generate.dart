@@ -31,7 +31,8 @@ Future generate(List<String> args) async {
   // Lists the files in the flconf directory
   final confDir = Directory(path.join(Directory.current.path, 'flconf'));
   if (!await confDir.exists()) {
-    logError('flconf directory not found. Please run flconf init to create it.');
+    logError(
+        'flconf directory not found. Please run flconf init to create it.');
     exit(1);
   }
   final confFiles = confDir.listSync();

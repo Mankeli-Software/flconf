@@ -1,6 +1,6 @@
 name: flconf
 description: A dart command line tool to help run flutter apps easily from different config sets. Handy tool for running seperate environments for debug and release versions.
-version: 1.0.1
+version: 1.0.2
 homepage: https://mankeli.co
 repository: https://github.com/Mankeli-Software/flconf
 issue_tracker: https://github.com/Mankeli-Software/flconf/issues

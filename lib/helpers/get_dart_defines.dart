@@ -8,7 +8,9 @@ Future<List<String>> getDartDefines(String configName) async {
   // Adds the file type to the name (if not provided)
   if (!configName.endsWith('.json')) configName += '.json';
 
-  final output = ['--dart-define=flconf-config-file-name=${configName.split('.').first}'];
+  final output = [
+    '--dart-define=flconf-config-file-name=${configName.split('.').first}'
+  ];
 
   log('Running with config $configName');
 

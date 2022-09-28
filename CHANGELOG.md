@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Fixed issues in formatting
+
 ## 1.0.1
 
 - Fixed issues in analyzing
