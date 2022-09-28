@@ -28,4 +28,3 @@ extension ConfigExtension on Config {
 class FlConf {
   static final Config config = ConfigExtension.fromString(_configFileName);
 }
-

@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Fixed issues in formatting and added example
+
 ## 1.0.2
 
 - Fixed issues in formatting
