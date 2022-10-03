@@ -69,7 +69,7 @@ Future generate(List<String> args) async {
 //  IMPORTANT:  This file is generated using flconf command line tools and the values provided in the configuration files. Do not edit manually.
 
 /// Loads the config file name used to run the app.
-const _configFileName = String.fromEnvironment('flconf-config-file-name');
+const _configFileName = String.fromEnvironment('FLCONF_CONFIG_FILE_NAME');
 
 /// This enum is generated from the files in flconf directory, so it represents all the available configurations for this app.
 enum Config {

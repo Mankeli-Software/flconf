@@ -9,7 +9,7 @@ Future<List<String>> getDartDefines(String configName) async {
   if (!configName.endsWith('.json')) configName += '.json';
 
   final output = [
-    '--dart-define=flconf-config-file-name=${configName.split('.').first}'
+    '--dart-define=FLCONF_CONFIG_FILE_NAME=${configName.split('.').first}'
   ];
 
   log('Running with config $configName');
@@ -30,7 +30,7 @@ Future<List<String>> getDartDefines(String configName) async {
   /// Iterates through the config and adds the --dart-define variables to the output list
   confMap.forEach((key, value) {
     // Uses 'flconf-' prefix to avoid conflicts with other variables
-    output.add('--dart-define=flconf-$key=$value');
+    output.add('--dart-define=FLCONF_$key=$value');
   });
 
   return output;

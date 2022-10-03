@@ -1,3 +1,7 @@
+## 1.0.5
+
+- Updated flconf --dart-define prefix
+
 ## 1.0.4
 
 - Added getters for config types in generated dart file
