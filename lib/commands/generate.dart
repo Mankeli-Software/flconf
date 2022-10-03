@@ -107,6 +107,12 @@ class FlConf {
   static final Config config = ConfigExtension.fromString(_configFileName);
 ''');
 
+  confFileNames.forEach((formatted, unformatted) {
+    sink.write('''
+  static bool get is${formatted[0].toUpperCase() + formatted.substring(1)} => config == Config.$formatted;
+''');
+  });
+
   variables.forEach((formatted, unformatted) {
     sink.write('''
   static const String $formatted = String.fromEnvironment('$unformatted');

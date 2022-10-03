@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Added getters for config types in generated dart file
+
 ## 1.0.3
 
 - Fixed issues in formatting and added example
