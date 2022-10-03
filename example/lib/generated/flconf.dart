@@ -27,4 +27,6 @@ extension ConfigExtension on Config {
 /// This class is generated using flconf command line tools. It helps to access the values provided in the configuration files.
 class FlConf {
   static final Config config = ConfigExtension.fromString(_configFileName);
+  static bool get isDev => config == Config.dev;
+  static bool get isProd => config == Config.prod;
 }
