@@ -1,3 +1,7 @@
+## 1.0.6
+
+- Updated variable name formatting
+
 ## 1.0.5
 
 - Updated flconf --dart-define prefix

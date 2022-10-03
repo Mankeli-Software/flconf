@@ -1,12 +1,21 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flconf/helpers/format_variable_name.dart';
+import 'package:flconf/helpers/format_strings.dart';
 import 'package:path/path.dart' as path;
 
 import '../helpers/logger.dart';
 
 /// Generates boilerplate code that makes it easier to access config variables in dart code.
 Future generate(List<String> args) async {
+  // Lists the files in the flconf directory
+  final confDir = Directory(path.join(Directory.current.path, 'flconf'));
+  if (!await confDir.exists()) {
+    logError(
+        'flconf directory not found. Please run flconf init to create it.');
+    exit(1);
+  }
+  final confFiles = confDir.listSync();
+
   // Creates the lib directory, if it doesn't exist (at the root of the project)
   final lib = Directory(path.join(Directory.current.path, 'lib'));
 
@@ -28,15 +37,6 @@ Future generate(List<String> args) async {
   }
   await flconfFile.create();
 
-  // Lists the files in the flconf directory
-  final confDir = Directory(path.join(Directory.current.path, 'flconf'));
-  if (!await confDir.exists()) {
-    logError(
-        'flconf directory not found. Please run flconf init to create it.');
-    exit(1);
-  }
-  final confFiles = confDir.listSync();
-
   // These will store the raw AND formatted names of the files/variables.
   // Name formatting removes whitespaces/special characters and makes the names camelCase.
   final confFileNames = <String, String>{};
@@ -56,7 +56,7 @@ Future generate(List<String> args) async {
         final confString = await confFile.readAsString();
         final confMap = json.decode(confString) as Map;
         confMap.forEach((key, value) {
-          variables[formatVariableName(key)] = 'flconf-' + key;
+          variables[formatVariableName(key)] = 'FLCONF_' + key;
         });
       },
     ),
