@@ -1,3 +1,8 @@
+## 1.0.7
+
+- Added boilerplate generation for both ios and android configurations.
+- Updated documentation.
+
 ## 1.0.6
 
 - Updated variable name formatting

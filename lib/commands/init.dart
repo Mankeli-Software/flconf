@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flconf/helpers/logger.dart';
+import 'package:flconf/helpers/validators.dart';
 import 'package:path/path.dart' as path;
 
 /// Creates a config set from the given config files
@@ -10,19 +11,25 @@ Future init(List<String> args) async {
     exit(1);
   }
 
-  final confDir = Directory(path.join(Directory.current.path, 'flconf'));
+  args.add('defaults');
 
-  if (!await confDir.exists()) {
-    await confDir.create();
+  /// Validates the given file names
+  for (var arg in args) {
+    if (!validateConfigFileName(arg)) {
+      logError(
+          'Config file name "$arg" is not valid. Config file names must be alphanumeric (with underscores as spaces) and it cannot start with a number.');
+      exit(1);
+    }
   }
 
   await Future.wait(
     args.map(
       (configname) async {
         if (!configname.endsWith('.json')) configname += '.json';
-        final confFile = File(path.join(confDir.path, '$configname'));
+        final confFile =
+            File(path.join(Directory.current.path, 'flconf', '$configname'));
         if (!await confFile.exists()) {
-          await confFile.create();
+          await confFile.create(recursive: true);
           await confFile.writeAsString('{}');
         }
       },

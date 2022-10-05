@@ -1,11 +1,12 @@
 /// Formats given [input] to not include special characters, and makes it camelCase.
-String formatVariableName(String input) {
+String formatCamelCase(String input) {
   var output = '';
 
   final words = input.split('_');
 
   for (var word in words) {
     if (word.isEmpty) continue;
+
     if (words.indexOf(word) == 0) {
       output += word.toLowerCase();
     } else {
@@ -13,5 +14,5 @@ String formatVariableName(String input) {
     }
   }
 
-  return output.replaceAll(RegExp(r'[^\w\s]+'), '');
+  return output;
 }
