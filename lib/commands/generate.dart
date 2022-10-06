@@ -27,7 +27,7 @@ Future generate(List<String> args) async {
   /// Checks that the version is at least 2.0.0
   final flutterVersion =
       result.stdout.toString().split(' ')[1].split('.').join();
-  log('Flutter version: $flutterVersion');
+
   if (int.parse(flutterVersion) < 220) {
     /// Flutter versions under 2.2.0 are not supported by flconf.
     logError('Flutter version 2.2.0 or higher is required.');
@@ -67,6 +67,12 @@ Future generate(List<String> args) async {
       },
     ),
   );
+
+  if (defaults.isEmpty) {
+    logError(
+        'No defaults file found. Please create a file named "defaults.json" in the flconf directory and apply your variables default values there.');
+    exit(1);
+  }
 
   confFileNames.remove('defaults');
 
@@ -157,22 +163,20 @@ Future _generateAndroidBoilerplate({
 
   /// Generates new code
   final generatedLines = [
-    'def flconfVariables = [ // Generated with flconf, DO NOT EDIT!!',
+    'def flconfVariables = [ // Generated with flconf, DO NOT EDIT!',
     ...variables.entries
         .map((key) =>
-            '    $key: ${defaults[key]}, // Generated with flconf, DO NOT EDIT!!')
+            '    $key: ${defaults[key]}, // Generated with flconf, DO NOT EDIT!')
         .toList(),
-    ']; // Generated with flconf, DO NOT EDIT!!',
-    '',
-    "if (project.hasProperty('dart-defines')) { // Generated with flconf, DO NOT EDIT!!",
-    "    flconfVariables = flconfVariables + project.property('dart-defines') // Generated with flconf, DO NOT EDIT!!",
-    "        .split(',') // Generated with flconf, DO NOT EDIT!!",
-    '        .collectEntries { entry -> // Generated with flconf, DO NOT EDIT!!',
-    "            def pair = new String(entry.decodeBase64(), 'UTF-8').split('=') // Generated with flconf, DO NOT EDIT!!",
-    '            [(pair.first()): pair.last()] // Generated with flconf, DO NOT EDIT!!',
-    '        } // Generated with flconf, DO NOT EDIT!!',
-    '} // Generated with flconf, DO NOT EDIT!!',
-    '',
+    ']; // Generated with flconf, DO NOT EDIT!',
+    "if (project.hasProperty('dart-defines')) { // Generated with flconf, DO NOT EDIT!",
+    "    flconfVariables = flconfVariables + project.property('dart-defines') // Generated with flconf, DO NOT EDIT!",
+    "        .split(',') // Generated with flconf, DO NOT EDIT!",
+    '        .collectEntries { entry -> // Generated with flconf, DO NOT EDIT!',
+    "            def pair = new String(entry.decodeBase64(), 'UTF-8').split('=') // Generated with flconf, DO NOT EDIT!",
+    '            [(pair.first()): pair.last()] // Generated with flconf, DO NOT EDIT!',
+    '        } // Generated with flconf, DO NOT EDIT!',
+    '} // Generated with flconf, DO NOT EDIT!',
   ];
 
   /// Inserts new generations to old build.gradle

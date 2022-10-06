@@ -1,3 +1,7 @@
+## 1.0.8
+
+- Added checks that default values actually exists
+
 ## 1.0.7
 
 - Added boilerplate generation for both ios and android configurations.
